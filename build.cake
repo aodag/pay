@@ -23,6 +23,18 @@ Task("Test")
     DotNetCoreTest("./test/Pay.Client.Test");
 });
 
+Task("Pack")
+    .IsDependentOn("Build")
+    .Does(() => 
+{
+    var settings = new DotNetCorePackSettings
+    {
+        Configuration = "Release",
+        OutputDirectory = "./artifacts"
+    };
+    DotNetCorePack("./src/Pay.Client", settings);
+});
+
 Task("Default")
     .IsDependentOn("Build");
 

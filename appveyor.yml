@@ -1,5 +1,8 @@
 image: Visual Studio 2015
 build_script:
-    - ps: .\build.ps1 -t Build
+    - ps: .\build.ps1 -t Pack
 test_script:
     - ps: .\build.ps1 -t Test
+
+artifacts:
+    - path: .\artifacts
